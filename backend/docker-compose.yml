@@ -10,8 +10,6 @@ services:
       - forum_network
     ports:
       - "3000:3000"
-    volumes:
-      - .:/app
 
   db:
     image: postgres:15
