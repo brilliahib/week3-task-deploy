@@ -7,7 +7,7 @@ WORKDIR /app
 
 COPY package.json bun.lock* ./
 
-RUN bun install
+RUN bun install --dev
 
 COPY . .
 
@@ -15,4 +15,4 @@ RUN bun prisma generate
 
 EXPOSE 3000
 
-CMD ["bun", "run", "--watch", "src/index.ts"]
+CMD ["bun", "run", "src/index.ts"]

@@ -48,14 +48,14 @@ Start development server:
 bun run dev
 
 API will be available at:
-http://localhost:3000
+https://forum-backend-rho.vercel.app
 
 ---
 
 ## 📘 Swagger Documentation
 
 Swagger UI dapat diakses melalui:
-http://localhost:3000/docs
+https://forum-backend-rho.vercel.app/docs
 
 ---
 
@@ -99,11 +99,8 @@ https://documenter.getpostman.com/view/36801373/2sB3dLUXMA
     │   └── schema.prisma
     │
     ├── src/
-    │   ├── libs/
     │   ├── middlewares/
-    │   ├── models/
-    │   ├── repositories/
-    │   ├── routes/
+    │   ├── modules/
     │   └── utils/
     │
     ├── .env

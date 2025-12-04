@@ -1,6 +1,8 @@
 import { Elysia } from "elysia";
-import { auth, comment, post } from "./routes";
+import { PostModule } from "./modules/post/post.module";
+import { CommentModule } from "./modules/comment/comment.module";
 import swagger from "@elysiajs/swagger";
+import { authModule } from "./modules/auth/auth";
 
 const app = new Elysia()
   .use(
@@ -20,9 +22,14 @@ const app = new Elysia()
       },
     })
   )
-  .group("/api", (app) =>
-    app.group("/v1", (app) => app.use(auth).use(post).use(comment))
-  )
-  .get("/", () => "Hello Elysia");
+  .get("/", () => "Welcome to the Forum API")
+  .use(authModule)
+  .use(PostModule)
+  .use(CommentModule)
+  .listen(9000);
+
+// console.log(
+//   `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
+// );
 
 export default app;
