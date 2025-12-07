@@ -52,6 +52,82 @@ https://forum-backend-rho.vercel.app
 
 ---
 
+## 🐳 Docker Setup
+
+### Prerequisites
+
+- Docker
+- Docker Compose
+
+### Build Docker Image
+
+Build the Docker image:
+
+```bash
+docker build -t forum-backend .
+```
+
+### Running with Docker Compose
+
+The project includes a `docker-compose.yml` file that sets up the entire environment with PostgreSQL database.
+
+Start the application and database:
+
+```bash
+docker-compose up -d
+```
+
+This will:
+
+- Start the PostgreSQL database on port 5432
+- Start the backend server on port 3000
+- Automatically run database migrations
+
+Stop the containers:
+
+```bash
+docker-compose down
+```
+
+View logs:
+
+```bash
+docker-compose logs -f
+```
+
+### Running Docker Manually
+
+Build the image:
+
+```bash
+docker build -t forum-backend .
+```
+
+Run the container:
+
+```bash
+docker run -p 3000:3000 \
+  -e DATABASE_URL="postgresql://postgres:password@localhost:5432/forum" \
+  forum-backend
+```
+
+### Environment Variables for Docker
+
+Make sure your `.env` file includes:
+
+```
+DATABASE_URL="postgresql://postgres:password@host.docker.internal:5432/forum"
+PORT=3000
+```
+
+For Docker Compose, the DATABASE_URL should point to the database service name:
+
+```
+DATABASE_URL="postgresql://postgres:password@postgres:5432/forum"
+```
+
+---
+
 ## 📘 Swagger Documentation
 
 Swagger UI dapat diakses melalui:
